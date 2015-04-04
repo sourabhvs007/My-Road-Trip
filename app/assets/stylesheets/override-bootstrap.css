@@ -1,0 +1,53 @@
+
+html, body {
+    height: 100%;
+}
+body {
+    color: #333333;
+    min-height: 100%;
+}
+.navbar {
+    border-radius: 0px;margin-bottom: 0px;
+}
+.navbar-brand {
+  font-family: 'Lobster', cursive;
+  font-size: 28px;
+}
+
+i.fa { color: #BF364F }
+.modal-dialog {
+    margin: 80px auto;
+    width: 500px;
+}
+
+textarea.form-control{
+   resize: none;
+}
+
+.issue_contenet{
+  height: 350px;
+   overflow-y:scroll;
+}
+
+.edit-fix{
+  margin-left: 18px;
+  margin-top: -8px;
+  margin-bottom: 7px;
+}
+.status_close{
+  background-color: red;
+  color: white;
+  float: right;
+  width: 45px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.status_open{
+  background-color: green;
+  color: white;
+  float: right;
+  width: 45px;
+  text-align: center;
+  border-radius: 20px;
+}

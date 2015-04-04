@@ -1,18 +1,31 @@
 Rails.application.routes.draw do
+  
+
+  # Facebook authentication routes
+  
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'sign_out', to: 'sessions#destroy', as: 'sign_out'
+  
+  
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get "users/check_email"=>"users#check_email"
+  get "sessions/check_email"=>"sessions#check_email"
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :users
+  resources :sessions, except: :show
 
   # Example resource route with options:
   #   resources :products do
