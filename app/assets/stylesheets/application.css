@@ -14,6 +14,8 @@
  *= require style
  *= require override-bootstrap
  *= require pagination
+ *= require stylish-portfolio
+ *= require shop-homepage
  *= require_self
  *= require_tree .
  */
