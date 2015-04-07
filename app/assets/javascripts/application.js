@@ -18,4 +18,5 @@
 //= require turbolinks
 //= require signup
 //= require signin
+//= require tinymce-jquery
 //= require_tree .
