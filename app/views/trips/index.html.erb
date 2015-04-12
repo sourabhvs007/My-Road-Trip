@@ -66,10 +66,9 @@
 </div>
 
 <div class="row">
-<%binding.pry%>
-  <%if @trip.present?%>
-  <%@trip.each do|trip|%>
-  <%= render :partial => "trips/stories",:locals=>{:trip=>trip}%>
+  <%if @trips.present?%>
+  <%@trips.each do|trip|%>
+  <%=render :partial => "trips/stories",:locals=>{:trip=>trip}%>
   <%end%>
   <%else%>
   <h4><center>No trip created</center></h4>

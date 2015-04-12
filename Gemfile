@@ -28,6 +28,12 @@ gem 'bcrypt', '~> 3.1.7'
 
 #TintMCE for text editing
 gem 'tinymce-rails'
+gem 'fog'
+gem 'rmagick', :require => 'RMagick'
+
+# for viewing images in heroku
+# gem 'aws-sdk'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -36,13 +42,13 @@ gem 'tinymce-rails'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0'
-  gem 'factory_girl_rails', '~> 4.5.0'
-  gem 'shoulda', '~> 3.5.0'
-  gem "awesome_print"
-  gem 'pry'
-  gem 'pry-doc'
-  gem 'pry-rails'
+	gem 'rspec-rails', '~> 3.0'
+	gem 'factory_girl_rails', '~> 4.5.0'
+	gem 'shoulda', '~> 3.5.0'
+	gem "awesome_print"
+	gem 'pry'
+	gem 'pry-doc'
+	gem 'pry-rails'
 end
 
 gem 'omniauth'

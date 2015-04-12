@@ -1,22 +1,20 @@
 class TripsController < ApplicationController
 
 	def new
-		@event=Event.new
+		@trip=Trip.new
 		respond_to do |format|
-			format.js{}
+			format.html{}
 		end
 	end
 
-	def show
+	# def show
 
-		@users=User.all
-		@event= Event.find(params[:id])
-		@invitee=Invitee.where(event_id:@event)
-		@participants=@event.selectInvitee(@event.id)
-		respond_to do |format|
-			format.js{}
-		end
-	end
+	# 	@users=User.all
+	# 	@trip= Trip.find(params[:id])
+	# 	respond_to do |format|
+	# 		format.js{}
+	# 	end
+	# end
 
 	def create
 		@trip=Trip.new(trip_params)
@@ -25,24 +23,22 @@ class TripsController < ApplicationController
 			@trip.save
 			respond_to do |format|
 				format.html{
-					redirect_to trips_path,:notice => "Event Created!"
+					redirect_to root_path,:notice => "Trip Created!"
 				}
 			end
 		else
-			redirect_to trips_path, :notice => "Event cannot be Created!"
+			redirect_to root_path, :notice => "Trip cannot be Created!"
 		end
 	end
 
 	def index
-		@users=User.all
-		@events = Event.order("updated_at desc").page(params[:page]).per(5)
-		@events.each do|event|
-			if event.present?	
-				@event=@events.first
-				@participants=@event.selectInvitee(@event.id)
-				@user=@event.notparticipants(@event.id)
+		@trip=Trip.all
+		@trips = Trip.order("updated_at desc")
+		@trips.each do|trip|
+			if trip.present?	
+				@trip=@trips.first
 			else
-				redirect_to events_path, :notice => "No events"
+				redirect_to trips_path, :notice => "No events"
 			end
 		end
 	end

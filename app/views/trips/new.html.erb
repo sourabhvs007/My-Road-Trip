@@ -1,0 +1,33 @@
+ <%= tinymce %>
+ <div class="container" class="col-sm-3 control-label">
+ 	<br></br>
+ 	<br></br>
+ 	<%= form_for :trip, :url => trips_path, :method=> 'post',:html => {:class =>"form-horizontal",:id =>"event_form"} do |f| %>
+
+ 	<%= f.text_field :title,:class =>"form-control", :id=>"title_name",:placeholder => "Title" %>
+ 	<br></br>
+ 	<%= f.text_area :description,:size=> "50x7",:class =>"form-control", :id=>"venue_name",:placeholder => "Description" %>
+ 	<br></br>
+
+ 	<label for="inputstatus">Display pic</label>
+ 	<div class="form-group">
+ 		<div class="col-sm-3">
+ 			<div class="event-title">
+ 				<%= image_tag "trip1.jpg", :alt=>"image", :class=>"img-thumbnail", :id => "preview" %>
+ 			</div>
+ 		</div>
+ 		<div class="col-sm-3">
+ 			<%= f.file_field :main_image, :id=>"exampleInputFile" %>
+ 		</div>
+ 		<div class="col-sm-2"></div>
+ 	</div>
+ 	<br></br>
+
+ 	<%= f.text_area :content ,:rows=>"number" ,:class=>"tinymce" ,:rows=>"40" ,:cols=>"120",:placeholder => "What is your story"%>
+ 	<br></br>
+ 	<%= f.submit "OK", :class=>"btn btn-primary ok-btn-padding" %>
+ 	<button type="button" class="btn btn-default ok-btn-padding" data-dismiss="modal">Cancel</button>
+ 	<%end%>
+ 	<br></br>
+ 	<br></br>
+ </div>
