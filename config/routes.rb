@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :users
   resources :sessions, except: :show
-  resources :trips  
+  resources :trips  do
+  resources :comments
+end
   # Example resource route with options:
   #   resources :products do
   #     member do

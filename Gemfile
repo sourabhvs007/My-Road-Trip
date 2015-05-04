@@ -29,7 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 #TintMCE for text editing
 gem 'tinymce-rails'
 gem 'fog'
-gem 'rmagick', :require => 'RMagick'
+gem 'rmagick'
 
 # for viewing images in heroku
 # gem 'aws-sdk'

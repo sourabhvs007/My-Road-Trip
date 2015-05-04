@@ -1,0 +1,73 @@
+ <div class="container" class="col-sm-3 control-label">
+ 	<br></br>
+ 	<br></br>
+ 	<div style="text-align: center; font-family: 'Berkshire Swash', cursive;">
+ 		<h1><%=@trip.title.titleize%></h1>
+ 	</div>
+ 	<br></br>
+ 	<h1><%=@trip.description%></h1>
+ 	<br></br>
+ 	<%=@trip.content.html_safe%>
+ 	<br></br>
+ 	<h1><%=image_tag @trip.main_image%></h1>
+ 	<br></br>
+ 	<br></br>
+ </div>
+
+
+ <body style="font-family:Verdana">
+
+ 	<div class="container">
+ 		<div class="row " style="padding-top:40px;">
+ 			<h3 class="text-center" >discussion forum </h3>
+ 			<br /><br />
+ 			<div class="col-md-8">
+ 				<div class="panel panel-info">
+ 					<div class="panel-heading">
+ 						RECENT CHAT HISTORY
+ 					</div>
+ 					<div class="panel-body">
+
+ 						<ul class="media-list">
+
+ 						</li>
+ 						<li class="media">
+
+ 							<div class="media-body">
+ 								<%@trip.comments.each do |c|%>
+ 								<div class="media">
+ 									<a class="pull-left" href="#">
+ 										<img class="media-object img-circle " src="/assets/user.png" />
+ 									</a>
+ 									<div class="media-body" >
+ 										<%=c.message%>
+ 										<br />
+ 										<small class="text-muted"><%=c.user.name%> | <%= c.created_at.strftime("%d %b. %Y")%></small>
+ 										<hr />
+ 									</div>
+ 								</div>
+ 								<%end%>
+ 							</div>
+ 						</li>
+ 					</ul>
+ 				</div>
+ 				<%= form_for :comment, :url => trip_comments_path(@trip), :method=> 'post' do |f| %>
+ 				<div class="panel-footer">
+ 					<div class="input-group">
+ 						<%= f.text_field :message,:class =>"form-control",:placeholder => "Enter Message" %>
+ 						<span class="input-group-btn">
+ 							<%= f.submit "SEND", :class=>"btn btn-info" %>
+ 						</span>
+ 					</div>
+ 				</div>
+ 				<%end%>
+ 			</div>
+ 		</div>
+ 		<div class="col-md-4">
+ 			
+ 		</div>
+
+ 	</div>
+ </div>
+</div>
+</body>

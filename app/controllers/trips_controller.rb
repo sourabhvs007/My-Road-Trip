@@ -7,14 +7,13 @@ class TripsController < ApplicationController
 		end
 	end
 
-	# def show
-
-	# 	@users=User.all
-	# 	@trip= Trip.find(params[:id])
-	# 	respond_to do |format|
-	# 		format.js{}
-	# 	end
-	# end
+	def show
+		@users=User.all
+		@trip= Trip.find(params[:id])
+		respond_to do |format|
+			format.html{}
+		end
+	end
 
 	def create
 		@trip=Trip.new(trip_params)

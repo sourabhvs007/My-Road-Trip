@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
 
-
-  has_many :issues
+  has_many :trips
   has_many :comments
   has_secure_password :validations => false
 
@@ -38,4 +37,4 @@ class User < ActiveRecord::Base
       end
     end
   end
-end
+endx`

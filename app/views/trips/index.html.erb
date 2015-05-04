@@ -68,7 +68,9 @@
 <div class="row">
   <%if @trips.present?%>
   <%@trips.each do|trip|%>
+  <%= link_to trip_path(trip) do %>
   <%=render :partial => "trips/stories",:locals=>{:trip=>trip}%>
+  <%end%>
   <%end%>
   <%else%>
   <h4><center>No trip created</center></h4>
