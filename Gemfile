@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'tinymce-rails'
 gem 'fog'
 gem 'rmagick'
+gem 'gmaps4rails'
 
 # for viewing images in heroku
 # gem 'aws-sdk'
@@ -56,5 +57,3 @@ gem 'omniauth-facebook'
 gem 'kaminari'
 gem 'capistrano', '~> 3.3.0'
 gem 'carrierwave'
-
-
