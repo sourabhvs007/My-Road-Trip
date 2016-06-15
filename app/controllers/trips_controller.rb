@@ -51,8 +51,11 @@ class TripsController < ApplicationController
   end
 
   def index
-    @trip = Trip.all
-    @trips = Trip.order('updated_at desc')
+    if params[:query].present?
+      @trips = Trip.search(params)
+    else
+      @trips = Trip.all.page(params[:page]).per(6)
+    end
     @trips.each do |trip|
       if trip.present?
         @trip = @trips.first

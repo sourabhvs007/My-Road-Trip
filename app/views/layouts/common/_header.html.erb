@@ -9,37 +9,66 @@
 			</button>
 
 			<a class="navbar-brand" href="/">
-			<i class="fa fa-motorcycle"></i>
-				My Road Trip
-			</a>
-		</div>
+       <i class="fa fa-motorcycle"></i>
+       My Road Trip
+     </a>
+   </div>
 
-		<div class="navbar-collapse collapse">
+   <div class="navbar-collapse collapse">
+     <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+      </li>
+      <%if current_user.present?%>
+      <li>
+       <img src="/assets/Profile-Pic.jpg" alt="Profile picture" class="img-rounded profile-pic">
+       <span class="profile-name"><%=current_user.name%></span>
+     </li>
+     <li>
+       <!-- Sign up Button trigger modal -->
 
-			<ul class="nav navbar-nav navbar-right">
-			<%if current_user.present?%>
-				<li>
-						 <img src="/assets/Profile-Pic.jpg" alt="Profile picture" class="img-rounded profile-pic">
-					<span class="profile-name"><%=current_user.name%></span>
-				</li>
-				 <li>
-					<!-- Sign up Button trigger modal -->
+       <%= button_to "Sign Out", session_path(:id => current_user.id),:method=> :delete,
+       :class=>"btn btn-success signup-login-btn"%>
+     </li>
+     <%else%>
+     <li>
+       <!-- Sign up Button trigger modal -->
+       <%= button_to "Sign up", new_user_path ,:method=> :get, remote: true, :class=>"btn btn-success signup-login-btn", 'data-toggle' => 'modal', 'data-target'=>'#myModal'%>
+     </li>
 
-				 <%= button_to "Sign Out", session_path(:id => current_user.id),:method=> :delete,
-						:class=>"btn btn-success signup-login-btn"%>
-			</li>
-			<%else%>
-				<li>
-					<!-- Sign up Button trigger modal -->
-					<%= button_to "Sign up", new_user_path ,:method=> :get, remote: true, :class=>"btn btn-success signup-login-btn", 'data-toggle' => 'modal', 'data-target'=>'#myModal'%>
-				</li>
-
-				<li>
-					<!-- Log in Button trigger modal -->
-					<%= button_to "Log In", new_session_path,:method=> :get, remote: true,:class => "btn btn-success signup-login-btn", 'data-toggle' => 'modal','data-target'=>'#myModal' %>
-				</li>
-				<%end%>
-			</ul>
-		</div><!--/.navbar-collapse -->
-	</div>
+     <li>
+       <!-- Log in Button trigger modal -->
+       <%= button_to "Log In", new_session_path,:method=> :get, remote: true,:class => "btn btn-success signup-login-btn", 'data-toggle' => 'modal','data-target'=>'#myModal' %>
+     </li>
+     <%end%>
+   </ul>
+ </div><!--/.navbar-collapse -->
+</div>
+</nav>
+<br>
+<br>
+<br>
+<br>
+ <nav id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+    <li class="sidebar-brand">
+      <a href="#top">Start Bootstrap</a>
+    </li>
+    <li>
+      <a href="/profile/new.html">Profile</a>
+    </li>
+    <li>
+      <a href="#about">About</a>
+    </li>
+    <li>
+      <a href="#services">Services</a>
+    </li>
+    <li>
+      <a href="#portfolio">Portfolio</a>
+    </li>
+    <li>
+      <a href="#contact">Contact</a>
+    </li>
+  </ul>
 </nav>
