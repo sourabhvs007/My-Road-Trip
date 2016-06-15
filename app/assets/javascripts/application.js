@@ -15,6 +15,8 @@
 //= require bootstrap
 //= require jquery.validate
 //= require jquery.validate.min
+//= require underscore
+//= require gmaps/google
 //= require turbolinks
 //= require signup
 //= require signin

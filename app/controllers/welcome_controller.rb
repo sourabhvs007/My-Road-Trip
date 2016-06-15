@@ -1,3 +1,4 @@
+# Welcome Comtroller
 class WelcomeController < ApplicationController
   def index
   end

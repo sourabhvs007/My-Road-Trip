@@ -1,52 +1,45 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+	<div class="container">
+		<div class="navbar-header">
+			<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 
-      <a class="navbar-brand" href="">
-      <i class="fa fa-motorcycle"></i>
-        My Road Trip
-      </a>
-    </div>
+			<a class="navbar-brand" href="/">
+			<i class="fa fa-motorcycle"></i>
+				My Road Trip
+			</a>
+		</div>
 
-    <div class="navbar-collapse collapse">
+		<div class="navbar-collapse collapse">
 
-      <ul class="nav navbar-nav navbar-right">
-      <%if current_user.present?%>
-        <li>
-             <img src="/assets/Profile-Pic.jpg" alt="Profile picture" class="img-rounded profile-pic">
-          <span class="profile-name"><%=current_user.name%></span>
-        </li>
-         <li>
-          <!-- Sign up Button trigger modal -->
+			<ul class="nav navbar-nav navbar-right">
+			<%if current_user.present?%>
+				<li>
+						 <img src="/assets/Profile-Pic.jpg" alt="Profile picture" class="img-rounded profile-pic">
+					<span class="profile-name"><%=current_user.name%></span>
+				</li>
+				 <li>
+					<!-- Sign up Button trigger modal -->
 
-         <%= button_to "Sign Out", session_path(:id => current_user.id),:method=> :delete,
-            :class=>"btn btn-success signup-login-btn"%>
-      </li>
-      <%else%>
-        <li>
-          <!-- Sign up Button trigger modal -->
-          <%= button_to "Sign up", new_user_path ,:method=> :get, remote: true, :class=>"btn btn-success signup-login-btn", 'data-toggle' => 'modal', 'data-target'=>'#myModal'%>
-        </li>
+				 <%= button_to "Sign Out", session_path(:id => current_user.id),:method=> :delete,
+						:class=>"btn btn-success signup-login-btn"%>
+			</li>
+			<%else%>
+				<li>
+					<!-- Sign up Button trigger modal -->
+					<%= button_to "Sign up", new_user_path ,:method=> :get, remote: true, :class=>"btn btn-success signup-login-btn", 'data-toggle' => 'modal', 'data-target'=>'#myModal'%>
+				</li>
 
-        <li>
-          <!-- Log in Button trigger modal -->
-          <%= button_to "Log In", new_session_path,:method=> :get, remote: true,:class => "btn btn-success signup-login-btn", 'data-toggle' => 'modal','data-target'=>'#myModal' %>
-        </li>
-        <%end%>
-      </ul>
-    </div><!--/.navbar-collapse -->
-  </div>
+				<li>
+					<!-- Log in Button trigger modal -->
+					<%= button_to "Log In", new_session_path,:method=> :get, remote: true,:class => "btn btn-success signup-login-btn", 'data-toggle' => 'modal','data-target'=>'#myModal' %>
+				</li>
+				<%end%>
+			</ul>
+		</div><!--/.navbar-collapse -->
+	</div>
 </nav>
-
-
-
-
-
-
-

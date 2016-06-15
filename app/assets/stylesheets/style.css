@@ -63,3 +63,6 @@ ul li span.profile-name {
   height: 250px;
    overflow-y:scroll;
 }
+.modal-backdrop {
+  z-index:-10;
+}
