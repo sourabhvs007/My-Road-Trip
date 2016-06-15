@@ -31,6 +31,7 @@ gem 'tinymce-rails'
 gem 'fog'
 gem 'rmagick'
 gem 'gmaps4rails'
+gem 'tire'
 
 # for viewing images in heroku
 # gem 'aws-sdk'

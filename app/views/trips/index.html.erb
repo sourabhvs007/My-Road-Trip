@@ -1,184 +1,85 @@
  <!-- side bar dashboard  -->
- <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
- <nav id="sidebar-wrapper">
-	 <ul class="sidebar-nav">
-		 <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-		 <li class="sidebar-brand">
-			 <a href="#top">Start Bootstrap</a>
-		 </li>
-		 <li>
-			 <a href="/profile/new.html">Profile</a>
-		 </li>
-		 <li>
-			 <a href="#about">About</a>
-		 </li>
-		 <li>
-			 <a href="#services">Services</a>
-		 </li>
-		 <li>
-			 <a href="#portfolio">Portfolio</a>
-		 </li>
-		 <li>
-			 <a href="#contact">Contact</a>
-		 </li>
-	 </ul>
- </nav>
- <div id="div_flash_message">
-	<%= render :partial=>"/layouts/common/flash_message" %>
+<div id="div_flash_message">
+  <%= render :partial=>"/layouts/common/flash_message" %>
 </div>
 
 <div class="container ">
 
-	<!-- home page scroll images -->
-	<div class="row carousel-holder">
+  <!-- home page scroll images -->
+  <div class="row carousel-holder">
 
-	 <div class="col-md-12">
-		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-		 <ol class="carousel-indicators">
-			<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-		</ol>
-		<div class="carousel-inner">
-			<div class="item active">
-			 <img class="slide-image" src="/assets/my_road_trip 4.jpg" alt="">
-		 </div>
-		 <div class="item">
-			 <img class="slide-image" src="/assets/my_road_trip 5.jpg" alt="">
-		 </div>
-		 <div class="item">
-			 <img class="slide-image" src="/assets/my_road_trip 6.jpg" alt="">
-		 </div>
-	 </div>
-	 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-		<span class="glyphicon glyphicon-chevron-left"></span>
-	</a>
-	<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-		<span class="glyphicon glyphicon-chevron-right"></span>
-	</a>
-</div>
-</div>
-</div>
+    <div class="col-md-12">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item active">
+            <img class="slide-image" src="/assets/my_road_trip_1.jpg" alt="">
+          </div>
+          <div class="item">
+            <img class="slide-image" src="/assets/my_road_trip_2.jpg" alt="">
+          </div>
+          <div class="item">
+            <img class="slide-image" src="/assets/my_road_trip_3.jpg" alt="">
+          </div>
+        </div>
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+    </div>
+  </div>
 
-<div class="well-sm pull-right">
- <%= button_to "Create New trip", new_trip_path ,:method=> :get, remote: false, :class=>"btn btn-warning", 'data-toggle' => 'modal'%>
+  <div class="well-sm pull-right MT-9">
+    <%= button_to "Create New trip", new_trip_path ,:method=> :get, remote: false, :class=>"btn btn-warning", 'data-toggle' => 'modal'%>
+  </div>
 
-</div>
+  <%= form_tag trips_path, html: { class:"form-horizontal" }, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", class: "btn btn-primary ok-btn-padding", name: nil %>
+  </p>
+  <%end%>
+  <br>
 
-<div class="row">
-	<%if @trips.present?%>
-	<%@trips.each do|trip|%>
-	<%= link_to trip_path(trip) do %>
-	<%=render :partial => "trips/stories",:locals=>{:trip=>trip}%>
-	<%end%>
-	<%end%>
-	<%else%>
-	<h4><center>No trip created</center></h4>
-	<%end%>
-<!--  <div class="col-sm-4 col-lg-4 col-md-4">
-	<div class="thumbnail">
-	 <img src="/assets/trip2.jpg" alt="">
-	 <div class="caption">
-		<h4><a href="#">Second Trip</a>
-		</h4>
-		<p>This is a short description about my trip to gopalaswamy betta in august 2014.</p>
-	</div>
-	<div class="ratings">
-		<p class="pull-right">12 reviews</p>
-		<p>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star-empty"></span>
-	 </p>
- </div>
-</div>
-</div>
-
-<div class="col-sm-4 col-lg-4 col-md-4">
-	<div class="thumbnail">
-	 <img src="/assets/trip3.jpg" alt="">
-	 <div class="caption">
-		<h4><a href="#">Third Trip</a>
-		</h4>
-		<p>This is a short description about my trip to the beautiful waterfall in india.</p>
-	</div>
-	<div class="ratings">
-		<p class="pull-right">31 reviews</p>
-		<p>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star-empty"></span>
-	 </p>
- </div>
-</div>
-</div>
--->
-<!-- <div class="col-sm-4 col-lg-4 col-md-4">
-	<div class="thumbnail">
-	 <img src="/assets/trip4.jpg" alt="">
-	 <div class="caption">
-		<h4><a href="#">Fourth Trip</a>
-		</h4>
-		<p>This is a short description about the trip to kerala.</p>
-	</div>
-	<div class="ratings">
-		<p class="pull-right">6 reviews</p>
-		<p>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star-empty"></span>
-		 <span class="glyphicon glyphicon-star-empty"></span>
-	 </p>
- </div>
-</div>
-</div>
-
-<div class="col-sm-4 col-lg-4 col-md-4">
-	<div class="thumbnail">
-	 <img src="/assets/trip5.jpg" alt="">
-	 <div class="caption">
-		<h4><a href="#">Fifth Trip</a>
-		</h4>
-		<p>This is a short description about the trip to pune.</p>
-	</div>
-	<div class="ratings">
-		<p class="pull-right">18 reviews</p>
-		<p>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star"></span>
-		 <span class="glyphicon glyphicon-star-empty"></span>
-	 </p>
- </div>
-</div>
-</div>
--->
-<div class="col-sm-4 col-lg-4 col-md-4">
-	<h4><a href="#">Like this website?</a>
-	</h4>
-	<p>click on the button to view more trip experience </p>
-	<a class="btn btn-primary" target="" href=#>View More Road Trips</a>
-</div>
-</div>
+  <div class="row">
+    <%if @trips.present?%>
+    <%@trips.each do|trip|%>
+    <%= link_to trip_path(trip) do %>
+    <%=render :partial => "trips/stories",:locals=>{:trip=>trip}%>
+    <%end%>
+    <%end%>
+    <%else%>
+    <h4><center>No trip created</center></h4>
+    <%end%>
+    
+    <div class="col-sm-4 col-lg-4 col-md-4">
+      <h4><a href="#">Like this website?</a>
+      </h4>
+      <p>click on the button to view more trip experience </p>
+      <a class="btn btn-primary" target="" href=#>View More Road Trips</a>
+    </div>
+  </div>
+  <%= paginate @trips %>
 </div>
 
 <script>
-		// Closes the sidebar menu
-		$("#menu-close").click(function(e) {
-			e.preventDefault();
-			$("#sidebar-wrapper").toggleClass("active");
-		});
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+      e.preventDefault();
+      $("#sidebar-wrapper").toggleClass("active");
+    });
 
-		// Opens the sidebar menu
-		$("#menu-toggle").click(function(e) {
-			e.preventDefault();
-			$("#sidebar-wrapper").toggleClass("active");
-		});
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#sidebar-wrapper").toggleClass("active");
+    });
 
-	</script>
+  </script>

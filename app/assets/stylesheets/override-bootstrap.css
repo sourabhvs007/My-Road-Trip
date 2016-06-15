@@ -1,13 +1,13 @@
 
 html, body {
-    height: 100%;
+  height: 100%;
 }
 body {
-    color: #333333;
-    min-height: 100%;
+  color: #333333;
+  min-height: 100%;
 }
 .navbar {
-    border-radius: 0px;margin-bottom: 0px;
+  border-radius: 0px;margin-bottom: 0px;
 }
 .navbar-brand {
   font-family: 'Lobster', cursive;
@@ -16,17 +16,17 @@ body {
 
 i.fa { color: #BF364F }
 .modal-dialog {
-    margin: 80px auto;
-    width: 500px;
+  margin: 80px auto;
+  width: 500px;
 }
 
 textarea.form-control{
-   resize: none;
+ resize: none;
 }
 
 .issue_contenet{
   height: 350px;
-   overflow-y:scroll;
+  overflow-y:scroll;
 }
 
 .edit-fix{
@@ -58,6 +58,10 @@ textarea.form-control{
 .map-style{
   margin-left: 2%;
   margin-top: -7%;
+}
+
+.MT-9{
+  margin-top: -10px;
 }
 
 
