@@ -19,6 +19,7 @@
 //= require gmaps/google
 //= require turbolinks
 //= require signup
+//= require maps
 //= require signin
 //= require tinymce-jquery
 //= require_tree .
