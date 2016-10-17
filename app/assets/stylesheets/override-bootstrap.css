@@ -64,6 +64,17 @@ textarea.form-control{
   margin-top: -10px;
 }
 
+.share{
+  height: 45px;
+  padding-top: 11px !important;
+}
+
+#map {
+  width: 500px;
+  height: 400px;
+  margin-top: 10px;
+}
+
 
 
 
