@@ -28,6 +28,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 #TintMCE for text editing
 gem 'tinymce-rails'
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem 'paperclip'
+gem 'responders', '~> 2.0'
 gem 'fog'
 gem 'rmagick'
 gem 'gmaps4rails'
