@@ -48,12 +48,12 @@
           <label>Story Route</label>
           <!-- Create route starts -->
           <div class="row margin-bottom-20">
-           <div class="col-md-6 margin-top-20 form-horizontal" id="calculate-route">
-             <div id="field" class="scroll col-md-9">
+           <div class="col-md-6 margin-top-20 form-horizontal scroll" id="calculate-route">
+             <div id="field1" class=" col-md-9">
                <a id="field1-link" href="#">Get my position</a>
-               <%= f.text_field :from_address, id: 'field1', name: 'checkpoint1' , class: "form-control margin-bottom-20", required: true, placeholder: "From address"%>
-               <button id="b1" class="btn add-more" type="button">+</button>
+               <%= f.text_field :from_address, id: 'from', name: 'checkpoint1' , class: "form-control margin-bottom-20", required: true, placeholder: "From address / Point - A "%>
              </div>
+             <button id="b1" class="btn add-more add-btn-margin-top" type="button">+</button>
 
              <div class="col-md-9 margin-top-20">
                <a id="to-link" href="#">Get my position</a>
@@ -97,7 +97,7 @@
     });
     /** autocomplete form and to text_field */
     var from = /** @type {!HTMLInputElement} */(
-      document.getElementById('field1'));
+      document.getElementById('from'));
 
     var to = /** @type {!HTMLInputElement} */(
       document.getElementById('to'));
@@ -144,7 +144,7 @@
         $("#calculateRoute").click(function(event) {
           event.preventDefault();
 
-          calculateRoute($("#field1").val(), $("#to").val());
+          calculateRoute($("#from").val(), $("#to").val());
         });
       });
 
@@ -156,21 +156,22 @@
       e.preventDefault();
       if(count == 0){
         var addto = "#field" + 1;
-        // var addRemove = "#field" + 1;
+      }
+      else if (document.getElementById('field' + (next)) == null){
+        while (document.getElementById('field' + (next)) == null){next -- ;}
+        var addto = "#field" + next;
       }
       else {
         var addto = "#field" + next;
-        // var addRemove = "#field" + (next);
-      }
+      } 
       next = next + 1;
       var removeBtnId = "remove" + (next);
-      var newIn = '<div class ="display-flex margin-bottom-20" id= "field' + next + '"> <button id="remove' + (next) + '" class="btn btn-danger remove-me" onclick="javascript:removeElement(event, remove' + next +'); return false;">-</button> <input autocomplete="off" class="col-md-6 input form-control" id= "field' + next + '" name= trip[checkpoint' + next + '] type="text"> </div>';
+      var newIn = '<div class ="col-md-9 display-flex margin-bottom-20" id= "field' + next + '"> <div class="col-md-11 margin-l"> <input autocomplete="off" class="col-md-6 input form-control" id= "waypoint-field' + next + '" name= trip[checkpoint' + next + '] type="text"></div> <div class="col-md-1"><button id="remove' + (next) + '" class="btn btn-danger remove-me" onclick="javascript:removeElement(event, remove' + next +'); return false;">-</button></div> </div>';
 
       var newInput = $(newIn);
       $(addto).after(newInput);
       count ++;
       // add auto complete to all extra fields
-      // $(addRemove).after(removeButton);
       $("#field" + next).attr('data-source',$(addto).attr('data-source'));
       $("#count").val(next);
 
@@ -179,7 +180,7 @@
         zoom: 5
       });
       var waypoint = /** @type {!HTMLInputElement} */(
-        document.getElementById('field2'));
+        document.getElementById('waypoint-field' + next));
       var autocomplete = new google.maps.places.Autocomplete(waypoint);
       autocomplete.bindTo('bounds', map);
       // end autocomplete

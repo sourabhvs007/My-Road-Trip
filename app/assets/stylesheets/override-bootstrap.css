@@ -81,8 +81,8 @@ textarea.form-control{
   display: -webkit-inline-box;
 }
 
-.display-flex {
-  display: flex;
+.display-inline-grid {
+  display: inline-grid;
 }
 
 .pd-left {
@@ -91,11 +91,23 @@ textarea.form-control{
 
 .scroll {
   overflow: scroll;
-  height: 15em;
+  height: 20em;
 }
 
 .margin-left {
   margin-left: 1em;
+}
+
+.margin-l {
+  margin-left: -1em;
+}
+
+.add-btn-margin-top {
+  margin-top: 1.5em;
+}
+
+.waypoint-margin {
+  margin-bottom: 5em;
 }
 
 
