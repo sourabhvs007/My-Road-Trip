@@ -55,10 +55,6 @@ textarea.form-control{
 .route-ml{
   margin-left: 0%;
 }
-.map-style{
-  margin-left: 2%;
-  margin-top: -7%;
-}
 
 .MT-9{
   margin-top: -10px;
@@ -70,11 +66,37 @@ textarea.form-control{
 }
 
 #map {
-  width: 500px;
+  width: 1110px;
   height: 400px;
   margin-top: 10px;
 }
 
+#createRoute {
+  width: 500px;
+  height: 300px;
+  margin-top: 10px;
+}
+
+.story-route {
+  display: -webkit-inline-box;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.pd-left {
+  padding-left: 37px;
+}
+
+.scroll {
+  overflow: scroll;
+  height: 15em;
+}
+
+.margin-left {
+  margin-left: 1em;
+}
 
 
 

@@ -18,10 +18,11 @@ class TripsController < ApplicationController
   end
 
   def create
+    binding.pry
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
     if @trip.valid? && @trip.errors.blank?
-      @trip.save
+      # @trip.save
       respond_to do |format|
         format.html { redirect_to root_path, notice: 'Trip Created!' }
       end

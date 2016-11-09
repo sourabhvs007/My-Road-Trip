@@ -1,0 +1,53 @@
+<div class="col-md-10 portfolio-group no-padding">
+  <!-- Portfolio Item -->
+  <div class="col-md-4 portfolio-item margin-bottom-40 filer-code">
+    <figure class="animate fadeInLeft">
+      <div>
+        <%= link_to trip_path(trip) do %>
+        <figure>
+          <%= image_tag  trip.main_image.url,  :alt =>"Image" %>
+          <figcaption>
+            <h3 class="margin-top-20"><%=trip.title%></h3>
+            <span><%=trip.description%></span>
+          </figcaption>
+        </figure>
+        <%end%>
+      </div>
+    </figure>
+  </div>
+  <!-- End Portfolio Item -->
+  <!-- Portfolio Item -->
+  <div class="col-md-4 portfolio-item margin-bottom-40 design">
+    <figure class="animate fadeInUp">
+      <div>
+        <a href="#">
+          <figure>
+            <img src="assets/portfolio/image2.jpg" alt="image2">
+            <figcaption>
+              <h3 class="margin-top-20">Quam nunc putamus</h3>
+              <span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</span>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+    </figure>
+  </div>
+  <!-- End Portfolio Item -->
+  <!-- Portfolio Item -->
+  <div class="col-md-4 portfolio-item margin-bottom-40 design">
+    <figure class="animate fadeInRight">
+      <div>
+        <a href="#">
+          <figure>
+            <img src="assets/frontpage/image2.jpg" alt="image2">
+            <figcaption>
+              <h3 class="margin-top-20">Quam nunc putamus</h3>
+              <span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</span>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+    </figure>
+  </div>
+  <!-- End Portfolio Item -->
+</div>

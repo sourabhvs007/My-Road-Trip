@@ -10,11 +10,17 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap.min
+//= require jquery.isotope
+//= require jquery.min
+//= require jquery.slicknav
+//= require jquery.sticky
+//= require jquery.visible
+//= require modernizr.custom
+//= require scripts
+//= require slimbox2
 //= require jquery.validate
-//= require jquery.validate.min
 //= require underscore
 //= require gmaps/google
 //= require turbolinks

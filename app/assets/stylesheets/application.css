@@ -11,6 +11,11 @@
  * file per style scope.
  *
  *= require bootstrap
+ *= require animate
+ *= require custom
+ *= require font-awesome
+ *= require nexus
+ *= require responsive
  *= require style
  *= require override-bootstrap
  *= require pagination
