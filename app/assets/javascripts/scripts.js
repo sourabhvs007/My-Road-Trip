@@ -185,7 +185,6 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 }
 
 function calculateRoute(from, to) {
-  debugger;
         // Center initialized to Naples, Italy
         var myOptions = {
           zoom: 10,
