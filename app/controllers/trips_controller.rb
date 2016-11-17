@@ -4,9 +4,6 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
-    respond_to do |format|
-      format.html {}
-    end
   end
 
   def show

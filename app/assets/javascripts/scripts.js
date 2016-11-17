@@ -184,7 +184,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   console.log("origin:",origin);
 }
 
-function calculateRoute(from, to) {
+function calculateRoute(from, waypoints, to) {
         // Center initialized to Naples, Italy
         var myOptions = {
           zoom: 10,
@@ -198,7 +198,7 @@ function calculateRoute(from, to) {
         var directionsRequest = {
           origin: from,
           destination: to,
-          waypoints: [{ location: "Coimbatore, Tamil Nadu, India" }],
+          waypoints: waypoints,
           travelMode: google.maps.DirectionsTravelMode.DRIVING,
           unitSystem: google.maps.UnitSystem.METRIC
         };

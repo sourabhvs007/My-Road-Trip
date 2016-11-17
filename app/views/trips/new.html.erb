@@ -20,7 +20,7 @@
         <br>
         <!-- Contact Form -->
         <form>
-          <%= form_for :trip, url: trips_path, method: 'post' do |f| %>
+          <%= form_for :trip, url: trips_path, method: :post do |f| %>
           <label>Title</label>
           <div class="row margin-bottom-20">
             <div class="col-md-6 col-md-offset-0">
@@ -50,7 +50,7 @@
           <div class="row margin-bottom-20">
            <div class="col-md-6 margin-top-20 form-horizontal scroll" id="calculate-route">
              <div id="field1" class=" col-md-9">
-               <a id="field1-link" href="#">Get my position</a>
+               <a id="from-link" href="#">Get my position</a>
                <%= f.text_field :from_address, id: 'from', name: 'checkpoint1' , class: "form-control margin-bottom-20", required: true, placeholder: "From address / Point - A "%>
              </div>
              <button id="b1" class="btn add-more add-btn-margin-top" type="button">+</button>
@@ -116,7 +116,7 @@
           return;
         }
 
-        $("#field1-link, #to-link").click(function(event) {
+        $("#from-link, #to-link").click(function(event) {
           event.preventDefault();
           var addressId = this.id.substring(0, this.id.indexOf("-"));
 
@@ -140,15 +140,20 @@
             timeout: 10 * 1000 // 10 seconds
           });
         });
-
+        var waypoints =[]
         $("#calculateRoute").click(function(event) {
           event.preventDefault();
-
-          calculateRoute($("#from").val(), $("#to").val());
+          if (waypointArray.length > 0){
+            for(i=0; i< waypointArray.length; i++){
+              waypoints.push({location: (document.getElementById('waypoint-field' + waypointArray[i])).value})
+            }
+          }
+          calculateRoute($("#from").val(), waypoints, $("#to").val());
         });
       });
 
   var count = 0;
+  var waypointArray = []
 
   $(document).ready(function(){
     var next = 1;
@@ -170,6 +175,7 @@
 
       var newInput = $(newIn);
       $(addto).after(newInput);
+      waypointArray.push(next)
       count ++;
       // add auto complete to all extra fields
       $("#field" + next).attr('data-source',$(addto).attr('data-source'));
@@ -194,6 +200,10 @@
     var fieldID = "#field" + fieldNum;
     $(buttonId).remove();
     $(fieldID).remove();
+    var index = waypointArray.indexOf(fieldNum)
+    if (index > -1) {
+      waypointArray.splice(index, 1);
+    }
     count --;
   }
 </script>
