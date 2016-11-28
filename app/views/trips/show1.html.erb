@@ -76,7 +76,7 @@
               </li>
             </ul>
           </div>
-          <%= form_for :comment, :url => trip_comments_path(@trip), :method=> 'post' do |f| %>
+          <%= form_for :comment, :url => comments_path(@trip), :method=> 'post' do |f| %>
           <div class="panel-footer">
             <div class="input-group">
               <%= f.text_field :message,:class =>"form-control",:placeholder => "Enter Message" %>

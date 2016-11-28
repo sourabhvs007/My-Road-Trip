@@ -43,11 +43,12 @@ ActiveRecord::Schema.define(version: 20161022190633) do
     t.text     "description"
     t.text     "content"
     t.string   "main_image"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "user_id"
     t.text     "from_address"
     t.text     "to_address"
+    t.text     "waypoints",    default: [],              array: true
   end
 
   add_index "trips", ["user_id"], name: "index_trips_on_user_id", using: :btree

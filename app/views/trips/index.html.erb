@@ -45,41 +45,41 @@
       <div class="col-md-12">
         <h2 class="text-center">Welcome to MY RoadTrip</h2>
         <p class="text-center">For friendly, expert advice from experienced road trippers in every part of the continent, join the My RoadTrip Forum. Free registration is required to post questions and join the discussions, but you are welcome to browse all the conversations and articles without registering.</p>
-          <p class="text-center">Create free custom maps. Enter your start and end points, then find great roadtrip attractions along your route. Registration is required to make maps, save, and share.</p>
-          </div>
-          <!-- End Main Text -->
-        </div>
+        <p class="text-center">Create free custom maps. Enter your start and end points, then find great roadtrip attractions along your route. Registration is required to make maps, save, and share.</p>
       </div>
-      <div class="container background-gray-lighter">
-        <div class="row padding-vert-20">
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-12">
-            <%if @trips.present?%>
-            <%@trips.each do|trip|%>
-            <div class="row">
-              <%= render :partial=>"layouts/common/portfolio",:locals=>{:trip=>trip}%>
-            </div>
-            <%end%>
-            <%else%>
-            <h2 class="animate fadeIn text-center">No Trips Created.</h2>
-            <%end%>
-          </div>
-          <div class="col-md-1">
-          </div>
-        </div>
+      <!-- End Main Text -->
+    </div>
+  </div>
+  <div class="container background-gray-lighter">
+    <div class="row padding-vert-20">
+      <div class="col-md-1">
       </div>
-      <div class="container background-white">
-        <div class="row padding-vert-40">
-          <div class="col-md-12">
-            <h2 class="animate fadeIn text-center">WE ARE CURRENTLY HIRING!</h2>
-            <p class="animate fadeIn text-center">If you like to work with a creative team in a lively and friendly enviroment then call us today!.</p>
-            <p class="animate fadeInUp text-center">
-              <button class="btn btn-primary btn-lg" type="button">View Details</button>
-            </p>
-          </div>
+      <div class="col-md-12">
+        <%if @trips.present?%>
+        <%(0..@trips.count - 1).each_slice(3) do|first, middle, last|%>
+        <div class="row">
+          <%= render :partial=>"layouts/common/portfolio",:locals=>{:trip_first => @trips[first], :trip_middle => middle != nil ? @trips[middle]: nil, :trip_last => last != nil ? @trips[last]: nil}%>
         </div>
+        <%end%>
+        <%else%>
+        <h2 class="animate fadeIn text-center">No Trips Created.</h2>
+        <%end%>
+      </div>
+      <div class="col-md-1">
       </div>
     </div>
-    <!-- === END CONTENT === -->
+  </div>
+  <div class="container background-white">
+    <div class="row padding-vert-40">
+      <div class="col-md-12">
+        <h2 class="animate fadeIn text-center">WE ARE CURRENTLY HIRING!</h2>
+        <p class="animate fadeIn text-center">If you like to work with a creative team in a lively and friendly enviroment then call us today!.</p>
+        <p class="animate fadeInUp text-center">
+          <button class="btn btn-primary btn-lg" type="button">View Details</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- === END CONTENT === -->
 

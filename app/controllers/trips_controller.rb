@@ -9,6 +9,7 @@ class TripsController < ApplicationController
   def show
     @users = User.all
     @trip = Trip.find(params[:id])
+    @user = @trip.user
     respond_to do |format|
       format.html {}
     end
@@ -16,9 +17,10 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
+    @trip.waypoints = @trip.checkpoint_address(params["trip"])
     @trip.user_id = current_user.id
     if @trip.valid? && @trip.errors.blank?
-      # @trip.save
+      @trip.save
       respond_to do |format|
         format.html { redirect_to root_path, notice: 'Trip Created!' }
       end
@@ -65,6 +67,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :description, :content, :main_image, :from_address, :to_address)
+    params.require(:trip).permit(:title, :description, :content, :main_image, :from_address, :to_address, :waypoints)
   end
 end

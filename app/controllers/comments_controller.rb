@@ -11,13 +11,10 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.trip_id = params[:trip_id].to_i
     @trip = Trip.find_by_id(@comment.trip_id)
     if @comment.valid? && @comment.errors.blank?
       @comment.save
-      respond_to do |format|
-        format.html { redirect_to trip_path(@trip), notice: 'Comment Added!' }
-      end
+      redirect_to trip_path(@trip), notice: 'Comment Added!'
     else
       redirect_to trip_path(@comment.trip_id), notice: 'Comment cannot be added!'
 
@@ -25,6 +22,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:message)
+    params.require(:comment).permit(:message, :trip_id)
   end
 end
