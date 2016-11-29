@@ -64,6 +64,10 @@ class TripsController < ApplicationController
     end
   end
 
+  def list_trip
+    @trips = Trip.order("updated_at desc").page(params[:page]).per(5)
+  end
+
   private
 
   def trip_params

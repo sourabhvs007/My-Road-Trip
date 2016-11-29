@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   get "users/check_email"=>"users#check_email"
   get "sessions/check_email"=>"sessions#check_email"
+  get "trips/list"=>"trips#list_trip"
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :users
   resources :sessions, except: :show
