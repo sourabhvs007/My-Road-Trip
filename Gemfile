@@ -38,6 +38,7 @@ gem 'fog'
 gem 'rmagick'
 gem 'gmaps4rails'
 gem 'tire'
+gem 'impressionist'
 
 # for viewing images in heroku
 # gem 'aws-sdk'

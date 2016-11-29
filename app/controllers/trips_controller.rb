@@ -1,6 +1,7 @@
 # Trip Controller
 class TripsController < ApplicationController
   before_filter :require_login, only: [:new]
+  impressionist actions: [:show], unique: [:session_hash]
 
   def new
     @trip = Trip.new
@@ -9,6 +10,7 @@ class TripsController < ApplicationController
   def show
     @users = User.all
     @trip = Trip.find(params[:id])
+    impressionist(@trip)
     @user = @trip.user
     respond_to do |format|
       format.html {}

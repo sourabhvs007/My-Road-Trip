@@ -1,5 +1,6 @@
 # Trip Model
 class Trip < ActiveRecord::Base
+  is_impressionable
   has_many :comments
   belongs_to :user
   mount_uploader :main_image, ImageUploader
