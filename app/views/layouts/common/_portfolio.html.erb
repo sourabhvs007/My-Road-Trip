@@ -9,6 +9,9 @@
           <figcaption>
             <h3 class="margin-top-20"><%=trip_first.title%></h3>
             <span><%=truncate trip_first.description, length: 100 %></span>
+            <br>
+            <span class="comment-spacing"><%=trip_first.likes.size%> Likes</span>
+            <span><%=trip_first.impressionist_count(:filter=>:user_id)%> Views </span>
           </figcaption>
         </figure>
         <%end%>
@@ -27,6 +30,9 @@
           <figcaption>
             <h3 class="margin-top-20"><%=trip_middle.title%></h3>
             <span><%=truncate trip_middle.description, length: 100 %></span>
+            <br>
+            <span class="comment-spacing"><%=trip_middle.likes.size%> Likes</span>
+            <span><%=trip_middle.impressionist_count(:filter=>:user_id)%> Views </span>
           </figcaption>
         </figure>
         <%end%>
@@ -46,6 +52,9 @@
          <figcaption>
           <h3 class="margin-top-20"><%=trip_last.title%></h3>
           <span><%=truncate trip_last.description, length: 100%></span>
+          <br>
+          <span class="comment-spacing"><%=trip_last.likes.size%> Likes</span>
+          <span><%=trip_last.impressionist_count(:filter=>:user_id)%> Views </span>
         </figcaption>
       </figure>
       <%end%>

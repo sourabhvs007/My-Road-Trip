@@ -10,6 +10,8 @@ class TripsController < ApplicationController
   def show
     @users = User.all
     @trip = Trip.find(params[:id])
+    @trips = Trip.all
+    @likeable = @trip.like(@trip, current_user)
     impressionist(@trip)
     @user = @trip.user
     respond_to do |format|
@@ -63,6 +65,18 @@ class TripsController < ApplicationController
       else
         redirect_to trips_path, notice: 'No events'
       end
+    end
+  end
+
+  def like
+    @trip = Trip.find(params[:trip])
+    Like.create(likeable: @trip, user: current_user, like: params[:like])
+    respond_to do |format|
+      format.html do
+        flash[:success] = "Like Counted!"
+        redirect_to :back
+      end
+      format.js
     end
   end
 

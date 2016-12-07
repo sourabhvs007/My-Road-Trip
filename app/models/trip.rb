@@ -1,6 +1,7 @@
 # Trip Model
 class Trip < ActiveRecord::Base
   is_impressionable
+  has_many :likes, as: :likeable
   has_many :comments
   belongs_to :user
   mount_uploader :main_image, ImageUploader
@@ -26,6 +27,14 @@ class Trip < ActiveRecord::Base
     end
     checkpointArray
   end
+
+  def like(trip, user)
+   if trip.likes.where(user_id: user).present?
+    likeable = false 
+  else
+    likeable = true
+  end
+end
 
   # def check_update(old_trip_story,new_trip_story)
   #   if old_trip_story.description!=new_trip_story[:description]||old_event.content!=new_trip_story[:content]

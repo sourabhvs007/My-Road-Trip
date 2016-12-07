@@ -91,7 +91,9 @@
   function initMap() {
     var map = new google.maps.Map(document.getElementById('createRoute'),{
       center: {lat: 20.5937, lng: 78.9629},
-      zoom: 5
+      zoom: 5,
+      scaleControl: false,
+      scrollwheel: false
     });
     /** autocomplete form and to text_field */
     var from = /** @type {!HTMLInputElement} */(

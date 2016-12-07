@@ -1,9 +1,9 @@
 <div id="content">
-  <div class="container background-white">
+  <div class="container main-column">
     <div class="row margin-vert-30">
       <!-- Main Column -->
-      <div class="col-md-9">
-        <!-- Blog Post -->
+      <div class="col-md-9 background-white">
+        <!-- Trip Post -->
         <%if @trips.present?%>
         <%@trips.each do |trip|%>
         <%= render :partial=>"layouts/common/trip_post",:locals=>{:trip => trip}%>
@@ -12,107 +12,54 @@
         <%else%>
         <h2 class="animate fadeIn text-center">No Trips Created.</h2>
         <%end%>
-        <!-- End Blog Item -->
+        <!-- End Trip Item -->
       </div>
       <!-- End Main Column -->
       <!-- Side Column -->
-      <div class="col-md-3">
-        <!-- Blog Tags -->
+      <div class="col-md-3 recent-trip">
         <div class="blog-tags">
-          <h3>Tags</h3>
-          <ul class="blog-tags">
-            <li>
-              <a href="#" class="blog-tag">HTML</a>
-            </li>
-            <li>
-              <a href="#" class="blog-tag">CSS</a>
-            </li>
-            <li>
-              <a href="#" class="blog-tag">JavaScript</a>
-            </li>
-            <li>
-              <a href="#" class="blog-tag">jQuery</a>
-            </li>
-            <li>
-              <a href="#" class="blog-tag">PHP</a>
-            </li>
-            <li>
-              <a href="#" class="blog-tag">Ruby</a>
-            </li>
-            <li>
-              <a href="#" class="blog-tag">CoffeeScript</a>
-            </li>
-            <li>
-              <a href="#" class="blog-tag">Grunt</a>
-            </li>
-            <li>
-              <a href="#" class="blog-tag">Bootstrap</a>
-            </li>
-            <li>
-              <a href="#" class="blog-tag">HTML5</a>
-            </li>
-          </ul>
         </div>
-        <!-- End Blog Tags -->
         <!-- Recent Posts -->
         <div class="recent-posts">
-          <h3>Recent Posts</h3>
+          <h3>Recently Added Trips</h3>
           <ul class="posts-list margin-top-10">
+            <%@trips.last(5).each do |t|%>
             <li>
               <div class="recent-post">
-                <a href="">
-                  <%=image_tag("blog/thumbs/thumb1.jpg", :class=>"pull-left")%>
-                </a>
-                <a href="#" class="posts-list-title">Sidebar post example</a>
+                <%= link_to (image_tag t.main_image, :class=>"pull-left small"), trip_path(t)%>
+                <%= link_to t.title, trip_path(t)%>
                 <br>
                 <span class="recent-post-date">
-                  July 30, 2013
+                  <%=t.created_at.strftime("%d %b. %Y")%>
                 </span>
               </div>
               <div class="clearfix"></div>
             </li>
-            <li>
-              <div class="recent-post">
-                <a href="">
-                  <%=image_tag("blog/thumbs/thumb2.jpg", :class=>"pull-left")%>
-                </a>
-                <a href="#" class="posts-list-title">Sidebar post example</a>
-                <br>
-                <span class="recent-post-date">
-                  July 30, 2013
-                </span>
-              </div>
-              <div class="clearfix"></div>
-            </li>
-            <li>
-              <div class="recent-post">
-                <a href="">
-                  <%=image_tag("blog/thumbs/thumb3.jpg", :class=>"pull-left")%>
-                </a>
-                <a href="#" class="posts-list-title">Sidebar post example</a>
-                <br>
-                <span class="recent-post-date">
-                  July 30, 2013
-                </span>
-              </div>
-              <div class="clearfix"></div>
-            </li>
-            <li>
-              <div class="recent-post">
-                <a href="">
-                  <%=image_tag("blog/thumbs/thumb4.jpg", :class=>"pull-left")%>
-                </a>
-                <a href="#" class="posts-list-title">Sidebar post example</a>
-                <br>
-                <span class="recent-post-date">
-                  July 30, 2013
-                </span>
-              </div>
-              <div class="clearfix"></div>
-            </li>
+            <%end%>
           </ul>
         </div>
         <!-- End Recent Posts -->
+
+        <!-- Most Viewed Posts -->
+        <div class="recent-posts">
+          <h3>Recently Added Trips</h3>
+          <ul class="posts-list margin-top-10">
+            <%@trips.last(5).each do |t|%>
+            <li>
+              <div class="recent-post">
+                <%= link_to (image_tag t.main_image, :class=>"pull-left small"), trip_path(t)%>
+                <%= link_to t.title, trip_path(t)%>
+                <br>
+                <span class="recent-post-date">
+                  <%=t.created_at.strftime("%d %b. %Y")%>
+                </span>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+            <%end%>
+          </ul>
+        </div>
+        <!-- End Most Viewed Posts -->
       </div>
       <!-- End Side Column -->
     </div>

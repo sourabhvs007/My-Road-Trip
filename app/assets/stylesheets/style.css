@@ -74,4 +74,22 @@ ul li span.profile-name {
 
 .trip-list-image{
   height: 15em;
+  width: 19em;
+}
+
+.comment-spacing {
+  padding-right: 20px;
+}
+
+.small {
+  height: 4em;
+  width: 7em;
+}
+
+.recent-trip {
+  padding-top: 3.5%;
+}
+
+.main-column {
+  background-color: #F1F1F1;
 }

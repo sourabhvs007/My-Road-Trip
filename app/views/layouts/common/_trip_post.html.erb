@@ -1,60 +1,67 @@
-        <div class="blog-post padding-bottom-20">
-          <!-- Blog Item Header -->
-          <div class="blog-item-header">
-            <!-- Title -->
-            <h2>
-              <a href="#"><%=trip.title%></a>
-            </h2>
+        <div class="blog-post">
+          <!-- Trip Item Body -->
+          <div class="blog margin-top-20">
             <div class="clearfix"></div>
-            <!-- End Title -->
-          </div>
-          <!-- End Blog Item Header -->
-          <!-- Blog Item Details -->
-          <div class="blog-post-details">
-            <!-- Author Name -->
-            <div class="blog-post-details-item blog-post-details-item-left">
-              <i class="fa fa-user color-gray-light"></i>
-              <a href="#"><%=trip.user.name%></a>
-            </div>
-            <!-- End Author Name -->
-            <!-- Date -->
-            <div class="blog-post-details-item blog-post-details-item-left">
-              <i class="fa fa-calendar color-gray-light"></i>
-              <a href="#"><%=trip.created_at.strftime("%d %b. %Y")%></a>
-            </div>
-            <!-- End Date -->
-            <!-- Tags -->
-            <div class="blog-post-details-item blog-post-details-item-left blog-post-details-tags">
-              <i class="fa fa-tag color-gray-light"></i>
-              <a href="#">PHP</a>,
-              <a href="#">HTML</a>,
-              <a href="#">Ruby</a>
-            </div>
-            <!-- End Tags -->
-            <!-- # of Comments -->
-            <div class="blog-post-details-item blog-post-details-item-left blog-post-details-item-last">
-              <a href="">
-                <i class="fa fa-comments color-gray-light"></i>
-                <%=trip.comments.count%> Comments
-              </a>
-            </div>
-            <!-- End # of Comments -->
-          </div>
-          <!-- End Blog Item Details -->
-          <!-- Blog Item Body -->
-          <div class="blog">
-            <div class="clearfix"></div>
+            <%= link_to trip_path(trip) do %>
             <div class="blog-post-body row margin-top-15">
-              <div class="col-md-5">
-              <%=image_tag trip.main_image, :class=>"margin-bottom-20 trip-list-image"%>
+              <div class="col-md-4">
+                <%=image_tag trip.main_image, :class=>"margin-bottom-20 trip-list-image"%>
               </div>
-              <div class="col-md-7">
-                <p><%=trip.description%></p>
-                <!-- Read More -->
-                <%= link_to "Read More", trip_path(trip), :class=>"btn btn-primary icon-chevron-right readmore-icon"%>
-                <!-- End Read More -->
+              <div class="col-md-8">
+               <!-- Trip Item Header -->
+               <div class="blog-item-header">
+                <!-- Title -->
+                <h2>
+                  <a href="#"><%=trip.title%></a>
+                </h2>
+                <div class="clearfix"></div>
+                <!-- End Title -->
               </div>
+              <!-- End Trip Item Header -->
+              <p><%=trip.description%></p>
+              <!-- Trip Item Details -->
+              <div class="blog-post-details">
+                <!-- Author Name -->
+                <div class="blog-post-details-item blog-post-details-item-left">
+                  <i class="fa fa-user color-gray-light"></i>
+                  <a href="#"><%=trip.user.name%></a>
+                </div>
+                <!-- End Author Name -->
+                <!-- Date -->
+                <div class="blog-post-details-item blog-post-details-item-left">
+                  <i class="fa fa-calendar color-gray-light"></i>
+                  <a href="#"><%=trip.created_at.strftime("%d %b. %Y")%></a>
+                </div>
+                <!-- End Date -->
+                <!-- # of Likes -->
+                <div class="blog-post-details-item blog-post-details-item-left blog-post-details-item-last">
+                  <a href="">
+                    <i class="fa fa-comments color-gray-light"></i>
+                    <%=trip.likes.size%> Likes
+                  </a>
+                </div>
+                <!-- End # of Likes -->
+                <!-- # of Views -->
+                <div class="blog-post-details-item blog-post-details-item-left blog-post-details-item-last">
+                  <a href="">
+                    <i class="fa fa-comments color-gray-light"></i>
+                    <%=trip.impressionist_count(:filter=>:user_id)%> Views
+                  </a>
+                </div>
+                <!-- End # of Views -->
+                <!-- # of Comments -->
+                <div class="blog-post-details-item blog-post-details-item-left blog-post-details-item-last">
+                  <a href="">
+                    <i class="fa fa-comments color-gray-light"></i>
+                    <%=trip.comments.count%> Comments
+                  </a>
+                </div>
+                <!-- End # of Comments -->
+              </div>
+              <!-- End Trip Item Details -->
             </div>
           </div>
-          <!-- End Blog Item Body -->
+          <%end%>
         </div>
+        <!-- End Trip Item Body -->
+      </div>
