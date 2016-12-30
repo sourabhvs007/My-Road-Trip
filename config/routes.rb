@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get "users/check_email"=>"users#check_email"
   get "sessions/check_email"=>"sessions#check_email"
   get "trips/list"=>"trips#list_trip"
+  post "trips/like"=>"trips#like"
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :users
   resources :sessions, except: :show

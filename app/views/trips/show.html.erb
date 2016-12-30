@@ -51,7 +51,7 @@
             <div class="blog-post-details-item blog-post-details-item-left blog-post-details-item-last">
               <span class="pull-right">
                 <%if @likeable%>
-                <%= link_to like_trip_path(trip: @trip, like: true), method: 'post' do %>
+                <%= link_to trips_like_path(trip: @trip, like: true), method: 'post' do %>
                 Like this Trip  <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
                 <%end%>
                 <%else%>
@@ -60,6 +60,9 @@
               </span>
             </div>
             <!-- Like end -->
+          </div>
+          <div class="pull-right">
+            <%= button_to "Edit This Story", edit_trip_path ,:method=> :get, remote: false, :class=>"btn btn-info"%>
           </div>
           <div class="blog-item">
             <div class="clearfix"></div>

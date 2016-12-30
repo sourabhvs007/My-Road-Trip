@@ -40,11 +40,11 @@
         </div>
         <!-- End Recent Posts -->
 
-        <!-- Most Viewed Posts -->
+        <!-- Most Liked Posts -->
         <div class="recent-posts">
-          <h3>Recently Added Trips</h3>
+          <h3>Most Liked Trips</h3>
           <ul class="posts-list margin-top-10">
-            <%@trips.last(5).each do |t|%>
+            <%most_liked_trip.first(2).each do |t|%>
             <li>
               <div class="recent-post">
                 <%= link_to (image_tag t.main_image, :class=>"pull-left small"), trip_path(t)%>
@@ -59,7 +59,7 @@
             <%end%>
           </ul>
         </div>
-        <!-- End Most Viewed Posts -->
+        <!-- End Most Liked Posts -->
       </div>
       <!-- End Side Column -->
     </div>

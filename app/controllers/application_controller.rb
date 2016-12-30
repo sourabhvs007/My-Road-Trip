@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
   before_filter :set_cache_buster
   protect_from_forgery with: :exception
-  helper_method :current_user
+  helper_method :current_user, :most_liked_trip
 
   private
 
@@ -21,5 +21,9 @@ class ApplicationController < ActionController::Base
   def set_cache_buster
     response.headers['Cache-Control'] = 'no-cache, no-store, max-age=0, must-revalidate'
     response.headers['Pragma'] = 'no-cache'
+  end
+
+  def most_liked_trip
+    Trip.joins(:likes).select("trips.*, count(likes.id) as lcount").group("trips.id").order("lcount DESC")
   end
 end

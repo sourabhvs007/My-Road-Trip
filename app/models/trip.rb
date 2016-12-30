@@ -20,7 +20,7 @@ class Trip < ActiveRecord::Base
   def checkpoint_address(params)
     checkpointArray = Array.new
     if params.count > 5
-      (6..params.count - 1).each do |position|
+      (6..params.count-1).each do |position|
         point= position-4
         checkpointArray.push(params["checkpoint#{point}"])
       end
