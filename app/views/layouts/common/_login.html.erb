@@ -11,14 +11,14 @@
       <span class="input-group-addon">
         <i class="fa fa-user"></i>
       </span>
-      <%= text_field_tag :email,nil, :class =>"form-control",:id =>"inputUsername", :placeholder => "Email" %>
+      <%= text_field_tag :email,nil, :class =>"form-control",:id =>"inputUsername", :placeholder => "Email", :required => true %>
     </div>
 
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon">
         <i class="fa fa-lock"></i>
       </span>
-      <%= password_field_tag :password,nil, :class =>"form-control",:id =>"inputPassword",:placeholder => "Password" %>
+      <%= password_field_tag :password,nil, :class =>"form-control",:id =>"inputPassword",:placeholder => "Password", :required => true %>
     </div>
 
     <div class="row">

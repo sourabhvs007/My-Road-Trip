@@ -35,11 +35,4 @@ class Trip < ActiveRecord::Base
     likeable = true
   end
 end
-
-  # def check_update(old_trip_story,new_trip_story)
-  #   if old_trip_story.description!=new_trip_story[:description]||old_event.content!=new_trip_story[:content]
-  #
-  #     UpdateMail.update_event(old_event,new_event).deliver
-  #   end
-  # end
 end

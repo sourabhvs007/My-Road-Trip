@@ -189,5 +189,3 @@ function calculateRoute(from, waypoints, to) {
   });
 }
 
-
-

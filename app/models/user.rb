@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :trips
   has_many :comments
   has_secure_password validations: false
+  mount_uploader :thumbnail, ImageUploader
 
   validates :name, presence: true, unless: proc { |u| u.provider.present? }
 
@@ -13,7 +14,6 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 },
   unless: proc { |u| u.provider.present? }
 
-  mount_uploader :image, ImageUploader
 
   def self.authenticate(email, password)
     user = find_by_email(email)

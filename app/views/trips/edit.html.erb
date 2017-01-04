@@ -1,4 +1,4 @@
-<%= tinymce plugins: ["uploadimage"]%>
+<%= tinymce plugins: ["uploadimage"], relative_urls: false %>
 
 <!-- Post header begins-->
 <div id="post_header" class="container" style="height:40px">
@@ -19,7 +19,7 @@
         <p>Follow the Sign Board and share your journy</p>
         <br>
         <!-- Contact Form -->
-        <%= form_for :trip, :url => trip_path(@trip), :method=> :put,:html => {:class =>"form-horizontal",:id =>"event_form"} do |f| %>
+        <%= form_for :trip, :url => trip_path(@trip), :method=> :put,:html => {:class =>"form-horizontal",:id =>"event_form", :multipart => true} do |f| %>
         <label>Title</label>
         <div class="row margin-bottom-20">
           <div class="col-md-6 col-md-offset-0">

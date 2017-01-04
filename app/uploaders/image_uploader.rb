@@ -1,8 +1,6 @@
 # Image uploading functionality
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
-  include CarrierWave::MimeTypes
-  process :set_content_type
   storage Rails.env.production? ? :fog : :file
 
   # include CarrierWave::MiniMagick
@@ -24,7 +22,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
   version :standard_image do
-    process resize_to_limit: [100, 100]
+    process resize_to_limit: [500, 500]
   end
 
   # Create different versions of your uploaded files:

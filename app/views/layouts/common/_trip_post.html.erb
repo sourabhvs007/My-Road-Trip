@@ -5,7 +5,7 @@
             <%= link_to trip_path(trip) do %>
             <div class="blog-post-body row margin-top-15">
               <div class="col-md-4">
-                <%=image_tag trip.main_image, :class=>"margin-bottom-20 trip-list-image"%>
+                <%=image_tag trip.main_image.standard_image.url, :class=>"margin-bottom-20 trip-list-image"%>
               </div>
               <div class="col-md-8">
                <!-- Trip Item Header -->

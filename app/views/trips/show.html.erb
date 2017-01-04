@@ -107,10 +107,14 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-2">
+                <% if @trip.user.thumbnail?%>
+                <%=image_tag @trip.user.thumbnail.standard_image.url, :class=>"pull-left"%>
+                <%else%>
                 <%=image_tag("profiles/87.jpg", :class=>"pull-left")%>
+                <%end%>
               </div>
               <div class="col-md-10">
-                <label>John Doe</label>
+                <label><%=@trip.user.name%></label>
                 <p>Lorem ipsum dolor sit amet, in pri offendit ocurreret. Vix sumo ferri an. pfs adodio fugit delenit ut qui. Omittam suscipiantur ex vel,ex audiam intellegat gfIn labitur discere eos, nam an feugiat voluptua.</p>
               </div>
             </div>
@@ -129,7 +133,11 @@
               <div class="row">
                 <div class="col-md-2 profile-thumb">
                   <a href="#">
+                  <% if c.user.thumbnail?%>
+                    <%=image_tag c.user.thumbnail.standard_image.url, :class=>"pull-left"%>
+                    <%else%>
                     <%=image_tag("profiles/99.jpg", :class=>"media-object")%>
+                    <%end%>
                   </a>
                 </div>
                 <div class="col-md-10">
@@ -188,10 +196,10 @@
           <div class="recent-posts">
             <h3>Recently Added Trips</h3>
             <ul class="posts-list margin-top-10">
-              <%@trips.last(5).each do |t|%>
+              <%@trips.last(5).reverse.each do |t|%>
               <li>
                 <div class="recent-post">
-                  <%= link_to (image_tag t.main_image, :class=>"pull-left small"), trip_path(t)%>
+                  <%= link_to (image_tag t.main_image.thumb.url, :class=>"pull-left small"), trip_path(t)%>
                   <%= link_to t.title, trip_path(t)%>
                   <!-- <a href="#" class="posts-list-title"><%=t.title%></a> -->
                   <br>

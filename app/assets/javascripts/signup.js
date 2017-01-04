@@ -106,14 +106,14 @@ invalidHandler: function(event, validator) {
    });
 
   setTimeout(function(){ $("#exampleInputFile").change(function(){
+    debugger;
     if (this.files && this.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
         $('#preview').attr('src', e.target.result);
       }
-        reader.readAsDataURL(this.files[0]);
-      }
+      reader.readAsDataURL(this.files[0]);
+    }
   }); }, 400);
 }
-
 

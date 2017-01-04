@@ -24,7 +24,6 @@ class TripsController < ApplicationController
     @trip.waypoints = @trip.checkpoint_address(params["trip"])
     @trip.user_id = current_user.id
     if @trip.valid? && @trip.errors.blank?
-      binding.pry
       @trip.save
       respond_to do |format|
         format.html { redirect_to root_path, notice: 'Trip Created!' }
@@ -44,6 +43,7 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
+    params["trip"]["main_image"] = Trip.find(params[:id]).main_image if params["trip"]["main_image"].present? == false
     @trip.waypoints = @trip.checkpoint_address(params["trip"])
     if @trip.valid? && @trip.errors.blank?
       @trip.update(trip_params)
