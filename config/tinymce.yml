@@ -1,0 +1,16 @@
+toolbar:
+  - styleselect | bold italic | undo redo
+  - image | link
+toolbar_location: top
+toolbar_align: left
+statusbar_location: bottom
+buttons_add:
+  - tablecontrols
+  - fullscreen
+plugins:
+  - image
+  - link
+  - table
+  - fullscreen
+  - insertdatetime
+  - uploadimage

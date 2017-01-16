@@ -1,0 +1,12 @@
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+    - 'config/initializers/*'
+    - 'config/environments/*'
+    - 'config/deploy/*'
+    - 'config/*'
+    - 'bin/*'
+    - 'app/helpers/*'
+    - 'Gemfile'
+    - 'test/test_helper.rb'

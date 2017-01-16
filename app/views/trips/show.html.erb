@@ -1,0 +1,163 @@
+ <div class="container" class="col-sm-3 control-label">
+  <br></br>
+  <br></br>
+  <div style="text-align: center; font-family: 'Berkshire Swash', cursive;">
+    <h1><%=@trip.title.titleize%></h1>
+  </div>
+  <br></br>
+  <div style="font-family: 'Helvetica'">
+    <h2><%=@trip.description%></h2>
+  </div>
+  <br></br>
+  <%=@trip.content.html_safe%>
+  <br></br>
+  <h1><%=image_tag @trip.main_image%></h1>
+  <br></br>
+  <br></br>
+  <div style="text-align: center; font-family: 'Helvetica'">
+    <h2> Story route </h2>
+  </div>
+  <br></br>
+  <div id="map"></div>
+  <br></br>
+  <br></br>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-left">
+      <li>
+        <%= button_to "Edit Story", edit_trip_path ,:method=> :get, remote: false, :class=>"btn btn-info btn-lg"%>
+      </li>
+      <li>
+        <a href="javascript:fbShare()" class="btn btn-info btn-lg share">share</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+<body style="font-family:Verdana">
+
+  <div class="container">
+    <div class="row " style="padding-top:40px;">
+      <h3 class="text-center" >discussion forum </h3>
+      <br /><br />
+      <div class="col-md-8">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            RECENT CHAT HISTORY
+          </div>
+          <div class="panel-body">
+            <ul class="media-list">
+              <li class="media">
+                <div class="media-body">
+                  <% if @trip.comments.present? %>
+                  <%@trip.comments.each do |c|%>
+                  <div class="media">
+                    <a class="pull-left" href="#">
+                      <img class="media-object img-circle " src="/assets/user.png" />
+                    </a>
+                    <div class="media-body" >
+                      <%=c.message%>
+                      <br />
+                      <small class="text-muted"><%=c.user.name%> | <%= c.created_at.strftime("%d %b. %Y")%></small>
+                      <hr />
+                    </div>
+                  </div>
+                  <%end%>
+                  <%else%>
+                  <div class="media">
+                    <div class="media-body" >
+                      <h4><center>Write your first comment</center></h4>
+                    </div>
+                  </div>
+                  <%end%>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <%= form_for :comment, :url => trip_comments_path(@trip), :method=> 'post' do |f| %>
+          <div class="panel-footer">
+            <div class="input-group">
+              <%= f.text_field :message,:class =>"form-control",:placeholder => "Enter Message" %>
+              <span class="input-group-btn">
+                <%= f.submit "SEND", :class=>"btn btn-info" %>
+              </span>
+            </div>
+          </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="//connect.facebook.net/en_US/sdk.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_21910Bt7xVDIzMDB_UXtpCSC75BO0aw&callback=initMap">
+</script>
+<script>
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1569067850011644', // App ID
+      status     : false, 
+      version:  'v2.0',
+      cookie     : true, 
+      xfbml      : false  // parse XFBML
+    });
+    $(document).trigger('fbload');
+  };
+
+  function initMap() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7,
+      center: {lat: 20.5937, lng: 78.9629}
+    });
+    directionsDisplay.setMap(map);
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
+  }
+
+  function fbShare() {
+   console.log('<%=@trip.title.titleize%>');
+   console.log('<%=@trip.description%>');
+   console.log('<%=@trip.main_image.url%>');
+   FB.ui(
+   {
+    method: 'share',
+    href: 'https://www.youtube.com',
+    caption: '<%= @trip.title.titleize%>',
+    description: '<%= @trip.description%>',
+    picture: 'https://www.girlsgonestrong.com/wp-content/uploads/2016/02/NaturalMovement-AbbyClark-1200x630.png',
+  },
+  // callback
+  function(response) {
+    if (response && !response.error_message) {
+      alert('Posting completed.');
+    } else {
+      alert('Error while posting.');
+    }
+  }
+  );
+ }
+
+ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+  directionsService.route({
+    origin: '<%=@trip.from_address%>',
+    destination: '  <%=@trip.to_address%>',
+    travelMode: google.maps.TravelMode.DRIVING
+  }, function(response, status) {
+    if (status === google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+  console.log("origin:",origin);
+}
+</script>
+
