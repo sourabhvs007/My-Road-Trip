@@ -1,4 +1,4 @@
-FROM ruby:2.2.3
+FROM ruby:2.3.0
 RUN apt-get update && apt-get install vim -y apache2 -y libpq-dev -y build-essential -y nodejs
 RUN mkdir my-road-trip 
 WORKDIR /my-road-trip
