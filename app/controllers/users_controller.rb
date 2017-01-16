@@ -30,6 +30,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit 
+    @user = User.all
+    respond_to do |format|
+      format.html {}
+    end
+  end
+
   private
 
   def user_params

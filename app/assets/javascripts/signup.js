@@ -106,7 +106,6 @@ invalidHandler: function(event, validator) {
    });
 
   setTimeout(function(){ $("#exampleInputFile").change(function(){
-    debugger;
     if (this.files && this.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {

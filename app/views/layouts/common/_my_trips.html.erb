@@ -1,0 +1,32 @@
+<!-- My Trips -->
+<div class="col-md-3 person-details margin-bottom-30">
+  <%= link_to trip_path(trip) do %>
+  <figure>
+    <%= image_tag  trip.main_image.url,  :alt =>"Image", :class => "my_trip_main_image"%>
+    <figcaption>
+      <h3 class="margin-bottom-10"><%=trip.title%>
+        <small>- <%=trip.created_at.strftime("%d %b. %Y")%></small>
+      </h3>
+      <span><%=truncate trip.description, length: 50 %></span>
+    </figcaption>
+    <ul class="list-inline person-details-icons">
+      <li>
+        <%= link_to trip_path(trip) do %>
+        <b><%=trip.comments.count%></b> <i class="fa-lg fa-comments"></i>
+        <%end%>
+      </li>
+      <li>
+        <%= link_to trip_path(trip) do %>
+        <b><%= trip.likes.size %></b> <i class="fa-lg fa-thumbs-up"></i>
+        <%end%>
+      </li>
+      <li>
+        <%= link_to trip_path(trip) do %>
+        <b><%=trip.impressionist_count(:filter=>:user_id)%></b> <i class="fa-lg fa-users"></i>
+        <%end%>
+      </li>
+    </ul>
+  </figure>
+  <%end%>
+</div>
+<!-- //Portfolio Item// -->

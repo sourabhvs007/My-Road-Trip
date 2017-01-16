@@ -36,52 +36,51 @@
         <div class="row margin-bottom-20">
           <div class="col-sm-3">
             <div class="event-title">
-             <img />
+              <img src="/assets/trip_avatar.png">
+            </div>
+          </div>
+          <span class="glyphicon glyphicon-camera gi-5x fileinput-button upload-image">
+            <%= f.file_field :main_image, id: "exampleInputFile", class: 'file' %><b>Upload Display Image</b>
+          </span>
+        </div>
+        <label>Story Route</label>
+        <!-- Create route starts -->
+        <div class="row margin-bottom-20">
+         <div class="col-md-6 margin-top-20 form-horizontal scroll" id="calculate-route">
+           <div id="field1" class=" col-md-9">
+             <a id="from-link" href="#">Get my position</a>
+             <%= f.text_field :from_address, id: 'from', class: "form-control margin-bottom-20", required: true, placeholder: "From address / Point - A "%>
+           </div>
+           <button id="b1" class="btn add-more add-btn-margin-top" type="button">+</button>
+
+           <div class="col-md-9 margin-top-20">
+             <a id="to-link" href="#">Get my position</a>
+             <%= f.text_field :to_address, id: 'to', class: "form-control", required: true, placeholder: "To address" %>
            </div>
          </div>
-         <div class="col-sm-3">
-          <%= f.file_field :main_image, id: "exampleInputFile", class: 'file' %>
-        </div>
-        <div class="col-sm-2"></div>
+
+         <div class="col-md-5 map-style">
+           <div id="createRoute"></div>
+           <p id="error"></p>
+         </div>
+       </div>
+       <div class="margin-left margin-top-20 margin-bottom-20">
+        <button class= "btn btn-primary ok-btn-padding" id="calculateRoute" >Check Route </button>
+        <button type="reset" class="btn btn-warning ok-btn-padding">Reset</button>
       </div>
-      <label>Story Route</label>
-      <!-- Create route starts -->
-      <div class="row margin-bottom-20">
-       <div class="col-md-6 margin-top-20 form-horizontal scroll" id="calculate-route">
-         <div id="field1" class=" col-md-9">
-           <a id="from-link" href="#">Get my position</a>
-           <%= f.text_field :from_address, id: 'from', class: "form-control margin-bottom-20", required: true, placeholder: "From address / Point - A "%>
-         </div>
-         <button id="b1" class="btn add-more add-btn-margin-top" type="button">+</button>
-
-         <div class="col-md-9 margin-top-20">
-           <a id="to-link" href="#">Get my position</a>
-           <%= f.text_field :to_address, id: 'to', class: "form-control", required: true, placeholder: "To address" %>
-         </div>
-       </div>
-
-       <div class="col-md-5 map-style">
-         <div id="createRoute"></div>
-         <p id="error"></p>
-       </div>
-     </div>
-     <div class="margin-left margin-top-20 margin-bottom-20">
-      <button class= "btn btn-primary ok-btn-padding" id="calculateRoute" >Check Route </button>
-      <button type="reset" class="btn btn-warning ok-btn-padding">Reset</button>
-    </div>
-    <!-- Create route ends -->
-    <!-- Start tinymce text area -->
-    <%= f.text_area :content, rows: "8", class: "tinymce", placeholder: "What is your story" %>
-    <!-- Ends tinymce text area -->
-    <p class="margin-top-20">
-     <%= f.submit "Submit", class: "btn btn-primary" %>
-   </p>
-   <%end%>
-   <!-- End Contact Form -->
-   <!-- End Main Content -->
+      <!-- Create route ends -->
+      <!-- Start tinymce text area -->
+      <%= f.text_area :content, rows: "8", class: "tinymce", placeholder: "What is your story" %>
+      <!-- Ends tinymce text area -->
+      <p class="margin-top-20">
+       <%= f.submit "Submit", class: "btn btn-primary" %>
+     </p>
+     <%end%>
+     <!-- End Contact Form -->
+     <!-- End Main Content -->
+   </div>
+   <!-- End Main Column -->
  </div>
- <!-- End Main Column -->
-</div>
 </div>
 </div>
 <!-- Content Ends -->

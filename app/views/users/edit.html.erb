@@ -1,0 +1,74 @@
+<body>
+  <div id="pre-header" class="container" style="height: 40px">
+    <!-- Spacing above header -->
+  </div>
+  <div id="content-top-border" class="container">
+  </div>
+  <!-- === END HEADER === -->
+  <!-- === BEGIN CONTENT === -->
+  <div id="content">
+    <div class="container background-white">
+      <div class="row margin-vert-30">
+        <div class="col-md-12">
+          <h2 class="margin-vert-20">My Profile</h2>
+          <div class="row margin-bottom-30">
+           <div class="col-md-4 animate fadeIn">
+             <%if current_user.thumbnail.present?%>
+             <%=image_tag current_user.thumbnail, :class=>"margin-bottom-20"%>
+             <%else%>
+             <img src="/assets/avatar.png" alt="about-me" class="margin-top-10">
+             <%end%>
+             <ul class="list-inline about-me-icons margin-vert-20">
+              <li>
+                <a href="#">
+                  <i class="fa-lg fa-border fa-linkedin"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa-lg fa-border fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa-lg fa-border fa-dribbble"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa-lg fa-border fa-google-plus"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-8 animate fadeInLeft">
+            <h3 class="padding-top-10 pull-left"><%= current_user.name%>
+              <small>- <%= current_user.email%></small>
+            </h3>
+            <div class="clearfix"></div>
+            <h4>
+              <em>Commodo id natoque malesuada sollicitudin elit suscipit. Curae suspendisse mauris posuere accumsan massa posuere lacus convallis tellus interdum. Amet nullam fringilla nibh nulla convallis ut venenatis purus lobortis.</em>
+            </h4>
+            <p class="margin-bottom-30">Lorem Ipsum is simply dummy text of Lorem the printing and typesettings. Aliquam dictum nulla eu varius porta. Maecenas congue dui id posuere fermentum. Sed fringilla sem sed massa ullamcorper, vitae rutrum justo sodales.
+              Cras sed iaculis enim. Sed aliquet viverra nisl a tristique. Curabitur vitae mauris sem. Pellentesque iaculis nibh leo, mattis aliquet arcu tincidunt at.</p>
+            </div>
+          </div>
+          <hr class="margin-bottom-50">
+          <div class="row col-md-12">
+            <!-- My Trips -->
+            <%if current_user.trips.present?%>
+            <%current_user.trips.each do |trip|%>
+            <%= render :partial=>"layouts/common/my_trips",:locals=>{:trip => trip}%>
+            <%end%>
+            <%else%>
+            <h2 style="text-align: center;">No Trips Created</h2>
+            <hr class="margin-vert-50">
+            <%end%>
+            <!-- //Portfolio Item// -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- === END CONTENT === -->
+</body>

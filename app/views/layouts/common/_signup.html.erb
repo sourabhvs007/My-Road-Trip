@@ -8,17 +8,17 @@
        <%= link_to "HERE ", new_session_path,:method=> :get, remote: true, 'data-toggle' => 'modal','data-target'=>'#myModal' %>to login to your account.</p>
      </div>
 
-     <div class="row">
+     <div class="row margin-bottom-20">
       <img src="assets/avatar.png" id="default-thumb" class="user-thumbnail">
       <div class="col-sm-3 thumb-image">
-         <img id="preview"/>
+         <img id="preview" class="thumb_size"/>
      </div>
    </div>
 
-   <div>
+   <div class= "upload_thumbnail">
      <span class="glyphicon glyphicon-camera gi-5x fileinput-button">
        <!-- <input type="file" name="user[thumbnail]" id="exampleInputFile"> -->
-       <%= f.file_field :thumbnail, id: "exampleInputFile"%>
+       <%= f.file_field :thumbnail, id: "exampleInputFile"%> <b>Choose Profile Image</b>
      </span>
    </div>
 

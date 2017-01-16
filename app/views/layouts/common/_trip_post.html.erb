@@ -4,7 +4,7 @@
             <div class="clearfix"></div>
             <%= link_to trip_path(trip) do %>
             <div class="blog-post-body row margin-top-15">
-              <div class="col-md-4">
+              <div class="col-md-4 margin-top-20">
                 <%=image_tag trip.main_image.standard_image.url, :class=>"margin-bottom-20 trip-list-image"%>
               </div>
               <div class="col-md-8">
@@ -12,13 +12,11 @@
                <div class="blog-item-header">
                 <!-- Title -->
                 <h2>
-                  <a href="#"><%=trip.title%></a>
+                  <a href="#"><%=trip.title.capitalize%></a>
                 </h2>
-                <div class="clearfix"></div>
                 <!-- End Title -->
               </div>
               <!-- End Trip Item Header -->
-              <p><%=trip.description%></p>
               <!-- Trip Item Details -->
               <div class="blog-post-details">
                 <!-- Author Name -->
@@ -36,7 +34,7 @@
                 <!-- # of Likes -->
                 <div class="blog-post-details-item blog-post-details-item-left blog-post-details-item-last">
                   <a href="">
-                    <i class="fa fa-comments color-gray-light"></i>
+                    <i class="fa fa-thumbs-up  color-gray-light"></i>
                     <%=trip.likes.size%> Likes
                   </a>
                 </div>
@@ -44,7 +42,7 @@
                 <!-- # of Views -->
                 <div class="blog-post-details-item blog-post-details-item-left blog-post-details-item-last">
                   <a href="">
-                    <i class="fa fa-comments color-gray-light"></i>
+                    <i class="fa fa-eye color-gray-light"></i>
                     <%=trip.impressionist_count(:filter=>:user_id)%> Views
                   </a>
                 </div>
@@ -59,6 +57,8 @@
                 <!-- End # of Comments -->
               </div>
               <!-- End Trip Item Details -->
+              <div class="clearfix"></div>
+              <p class="margin-top-20"><%=truncate trip.description, length: 200 %></p>
             </div>
           </div>
           <%end%>

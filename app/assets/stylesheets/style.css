@@ -76,7 +76,7 @@ ul li span.profile-name {
 }
 
 .trip-list-image{
-  height: 15em;
+  height: 12em;
   width: 19em;
 }
 
@@ -99,7 +99,6 @@ ul li span.profile-name {
 
 .fileinput-button {
   position: relative;
-  overflow: hidden;
 }
 
 .fileinput-button input {
@@ -115,7 +114,21 @@ ul li span.profile-name {
 }
 
 .thumb-image {
-  margin-left: 7em;
+  margin-left: 8.3em;
   height: 7em;
   width: 11em;
+}
+
+.upload-image {
+  top: 12em;
+}
+
+.upload_thumbnail {
+  margin-left: 7em;
+  word-spacing: -9px;
+}
+
+.my_trip_main_image {
+  width: 100%;
+  height: 11em;
 }
